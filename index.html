@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Miriam George — Coordinator, Key Client Services</title>
+<link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --cream: #F7F4EF;
+    --parchment: #EDE8DF;
+    --ink: #1C1612;
+    --ink-light: #4A3F35;
+    --ink-muted: #7A6E64;
+    --red: #8B1A1A;
+    --red-light: #B83232;
+    --red-pale: #F5ECEC;
+    --gold: #B8922A;
+    --gold-pale: #F7F0DF;
+    --border: rgba(28,22,18,0.12);
+    --border-strong: rgba(28,22,18,0.25);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--ink);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(247,244,239,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 2.5rem;
+    height: 60px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-family: 'EB Garamond', serif;
+    font-size: 18px; font-weight: 500;
+    color: var(--red); letter-spacing: 0.02em;
+  }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 13px; font-weight: 400; color: var(--ink-muted);
+    text-decoration: none; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--red); }
+
+  /* HERO */
+  .hero {
+    padding-top: 60px;
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1fr 1fr;
+    background: var(--cream);
+  }
+  .hero-left {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 3.5rem 5rem 5rem;
+    border-right: 1px solid var(--border);
+  }
+  .hero-tag {
+    display: inline-block;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.12em;
+    text-transform: uppercase; color: var(--red);
+    background: var(--red-pale);
+    padding: 5px 12px; border-radius: 2px;
+    margin-bottom: 2rem;
+  }
+  .hero-name {
+    font-family: 'EB Garamond', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 500; line-height: 1;
+    color: var(--ink); margin-bottom: 0.5rem;
+  }
+  .hero-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem; font-style: italic;
+    color: var(--ink-light); margin-bottom: 2.5rem;
+  }
+  .hero-statement {
+    font-size: 15px; line-height: 1.75;
+    color: var(--ink-light); max-width: 480px;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--red);
+    padding-left: 1.25rem;
+  }
+  .hero-contacts { display: flex; flex-direction: column; gap: 0.6rem; }
+  .hero-contact {
+    font-size: 13px; color: var(--ink-muted);
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-contact strong { color: var(--ink); }
+
+  .hero-right {
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 5rem 4rem;
+    background: var(--parchment);
+  }
+  .hero-right h2 {
+    font-family: 'EB Garamond', serif;
+    font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-muted); margin-bottom: 2rem;
+  }
+  .match-grid { display: flex; flex-direction: column; gap: 1rem; }
+  .match-item {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1.1rem 1.3rem;
+    display: flex; align-items: flex-start; gap: 1rem;
+  }
+  .match-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--red); flex-shrink: 0; margin-top: 5px;
+  }
+  .match-item strong { font-size: 13px; font-weight: 500; display: block; margin-bottom: 3px; }
+  .match-item p { font-size: 13px; color: var(--ink-muted); line-height: 1.5; }
+
+  /* SECTIONS */
+  section { padding: 5rem; border-top: 1px solid var(--border); }
+  .section-label {
+    font-family: 'EB Garamond', serif;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--red); margin-bottom: 0.75rem;
+  }
+  .section-title {
+    font-family: 'EB Garamond', serif;
+    font-size: 2.5rem; font-weight: 500; line-height: 1.15;
+    color: var(--ink); margin-bottom: 3rem;
+  }
+
+  /* SKILLS */
+  #skills { background: white; }
+  .skills-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
+    border: 1px solid var(--border); border-radius: 4px; overflow: hidden;
+  }
+  .skill-box {
+    padding: 2rem; background: white;
+    border-right: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .skill-box:nth-child(3n) { border-right: none; }
+  .skill-box:nth-last-child(-n+3) { border-bottom: none; }
+  .skill-icon {
+    width: 36px; height: 36px; border-radius: 4px;
+    background: var(--red-pale); display: flex; align-items: center; justify-content: center;
+    font-size: 16px; margin-bottom: 1rem;
+  }
+  .skill-box h3 { font-size: 14px; font-weight: 500; margin-bottom: 0.5rem; }
+  .skill-box p { font-size: 13px; color: var(--ink-muted); line-height: 1.55; }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 0.75rem; }
+  .skill-tag {
+    font-size: 11px; padding: 3px 8px;
+    background: var(--gold-pale); color: var(--gold);
+    border-radius: 2px; font-weight: 500;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--cream); }
+  .exp-timeline { position: relative; padding-left: 2rem; }
+  .exp-timeline::before {
+    content: ''; position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 1px; background: var(--border-strong);
+  }
+  .exp-entry {
+    position: relative; margin-bottom: 3rem;
+  }
+  .exp-entry::before {
+    content: ''; position: absolute;
+    left: -2rem; top: 7px;
+    width: 8px; height: 8px; border-radius: 50%;
+    background: var(--red);
+    margin-left: -4px;
+  }
+  .exp-meta {
+    display: flex; align-items: baseline; gap: 1rem;
+    margin-bottom: 0.5rem; flex-wrap: wrap;
+  }
+  .exp-company {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem; font-weight: 500; color: var(--ink);
+  }
+  .exp-period {
+    font-size: 12px; color: var(--ink-muted); letter-spacing: 0.04em;
+  }
+  .exp-role {
+    font-size: 14px; font-style: italic;
+    color: var(--ink-light); margin-bottom: 1rem;
+  }
+  .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+  .exp-bullets li {
+    font-size: 14px; color: var(--ink-light); line-height: 1.6;
+    display: flex; align-items: flex-start; gap: 0.75rem;
+  }
+  .exp-bullets li::before {
+    content: ''; flex-shrink: 0;
+    width: 4px; height: 4px; border-radius: 50%;
+    background: var(--red); margin-top: 8px;
+  }
+
+  /* EDUCATION */
+  #education { background: var(--parchment); }
+  .edu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+  .edu-card {
+    background: white; border: 1px solid var(--border);
+    border-radius: 4px; padding: 1.75rem;
+    position: relative; overflow: hidden;
+  }
+  .edu-card::after {
+    content: ''; position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 3px; background: var(--red);
+  }
+  .edu-year {
+    font-size: 11px; letter-spacing: 0.1em;
+    color: var(--red); text-transform: uppercase;
+    margin-bottom: 1rem; font-weight: 500;
+  }
+  .edu-degree {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.15rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 0.4rem;
+  }
+  .edu-school { font-size: 13px; color: var(--ink-muted); margin-bottom: 0.5rem; }
+  .edu-spec { font-size: 12px; color: var(--ink-light); font-style: italic; }
+
+  /* PROJECTS */
+  #projects { background: white; }
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+  .project-card {
+    border: 1px solid var(--border); border-radius: 4px;
+    padding: 1.75rem; position: relative;
+  }
+  .project-card h3 {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.2rem; font-weight: 500;
+    color: var(--ink); margin-bottom: 0.6rem;
+  }
+  .project-card p { font-size: 13px; color: var(--ink-muted); line-height: 1.6; }
+  .project-badge {
+    display: inline-block;
+    font-size: 10px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; color: var(--gold);
+    background: var(--gold-pale);
+    padding: 3px 8px; border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  /* APPLICATION */
+  #application { background: var(--red); color: white; }
+  #application .section-label { color: rgba(255,255,255,0.6); }
+  #application .section-title { color: white; }
+  .app-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; }
+  .app-details { display: flex; flex-direction: column; gap: 1.25rem; }
+  .app-detail {
+    display: flex; flex-direction: column; gap: 3px;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.15);
+  }
+  .app-detail:last-child { border-bottom: none; padding-bottom: 0; }
+  .app-detail-label {
+    font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: rgba(255,255,255,0.5); font-weight: 500;
+  }
+  .app-detail-value { font-size: 15px; color: rgba(255,255,255,0.9); }
+  .app-pitch {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.3rem; font-style: italic;
+    line-height: 1.6; color: rgba(255,255,255,0.85);
+    margin-bottom: 2rem;
+  }
+  .app-cta {
+    display: inline-block;
+    background: white; color: var(--red);
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em;
+    padding: 12px 24px; border-radius: 2px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .app-cta:hover { opacity: 0.9; }
+
+  /* FOOTER */
+  footer {
+    padding: 2.5rem 5rem;
+    border-top: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    background: var(--cream);
+  }
+  .footer-name {
+    font-family: 'EB Garamond', serif;
+    font-size: 16px; color: var(--ink-muted);
+  }
+  .footer-contact { font-size: 13px; color: var(--ink-muted); }
+
+  /* ANIMATIONS */
+  .fade-in {
+    opacity: 0; transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .hero { grid-template-columns: 1fr; min-height: auto; }
+    .hero-left { padding: 3rem 2rem; border-right: none; border-bottom: 1px solid var(--border); }
+    .hero-right { padding: 3rem 2rem; }
+    section { padding: 3rem 2rem; }
+    .skills-grid, .edu-grid { grid-template-columns: 1fr; }
+    .projects-grid, .app-layout { grid-template-columns: 1fr; }
+    nav { padding: 0 1.5rem; }
+    .nav-links { gap: 1rem; }
+    footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <span class="nav-brand">Miriam George</span>
+  <ul class="nav-links">
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#application">Application</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="border-top: none; padding: 0;">
+  <div class="hero-left">
+    <span class="hero-tag">Applying for: Coordinator, Key Client Services — Daman</span>
+    <h1 class="hero-name">Miriam<br>George</h1>
+    <p class="hero-title">MBA · Service Operations & Marketing</p>
+    <p class="hero-statement">
+      I coordinate service operations, maintain compliance-ready documentation, and drive process improvement from day one. With hands-on SLA management, Excel reporting, and Power Automate experience, I am built for this role.
+    </p>
+    <div class="hero-contacts">
+      <div class="hero-contact">
+        <span>&#128222;</span>
+        <strong>+971 50 938 2156</strong>
+      </div>
+      <div class="hero-contact">
+        <span>&#9993;</span>
+        <strong>geomiriam@outlook.com</strong>
+      </div>
+      <div class="hero-contact">
+        <span>&#128205;</span>
+        <strong>Dubai, United Arab Emirates</strong>
+      </div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <h2>Why I fit this role</h2>
+    <div class="match-grid">
+      <div class="match-item fade-in">
+        <div class="match-dot"></div>
+        <div>
+          <strong>SLA Management</strong>
+          <p>Daily coordination of service requests against strict SLA timelines at Emerson — exactly what Daman requires.</p>
+        </div>
+      </div>
+      <div class="match-item fade-in">
+        <div class="match-dot"></div>
+        <div>
+          <strong>Document Verification</strong>
+          <p>Verified accuracy and completeness of service records prior to processing — a core responsibility in this role.</p>
+        </div>
+      </div>
+      <div class="match-item fade-in">
+        <div class="match-dot"></div>
+        <div>
+          <strong>Compliance-Ready Records</strong>
+          <p>Maintained audit-ready documentation structured to meet internal reporting standards.</p>
+        </div>
+      </div>
+      <div class="match-item fade-in">
+        <div class="match-dot"></div>
+        <div>
+          <strong>MBA + Preferred Qualification</strong>
+          <p>MBA in Service Operations & Marketing — Daman's preferred educational background for this position.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Capabilities</div>
+  <h2 class="section-title">Technical & Operational Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#128200;</div>
+      <h3>Service Operations & SLA</h3>
+      <p>Coordinating and tracking service requests against established timelines, resolving bottlenecks, and ensuring operational alignment.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">SLA Monitoring</span>
+        <span class="skill-tag">SR Tracking</span>
+        <span class="skill-tag">Workflow</span>
+      </div>
+    </div>
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#128196;</div>
+      <h3>Documentation & Compliance</h3>
+      <p>Maintaining audit-ready transaction records, verifying document completeness, and organising filing for internal reporting requirements.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Audit-Ready Filing</span>
+        <span class="skill-tag">Data Verification</span>
+      </div>
+    </div>
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#128202;</div>
+      <h3>Excel & Reporting</h3>
+      <p>Building operational dashboards, pivot tables, XLOOKUP, conditional formatting, and management-ready performance reports.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Pivot Tables</span>
+        <span class="skill-tag">XLOOKUP</span>
+        <span class="skill-tag">Dashboards</span>
+      </div>
+    </div>
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#128064;</div>
+      <h3>Power BI</h3>
+      <p>Intermediate reporting and data visualisation — building dashboards that surface performance trends and support data-driven decisions.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Basic–Intermediate</span>
+        <span class="skill-tag">Trend Analysis</span>
+      </div>
+    </div>
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#9889;</div>
+      <h3>Power Automate</h3>
+      <p>Identifying recurring process gaps and initiating automation workflows to improve turnaround time and workflow efficiency.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">Workflow Automation</span>
+        <span class="skill-tag">Process Improvement</span>
+      </div>
+    </div>
+    <div class="skill-box fade-in">
+      <div class="skill-icon">&#127760;</div>
+      <h3>Languages</h3>
+      <p>Professional proficiency in English for client and stakeholder communication. Intermediate Hindi. Beginner Arabic — actively developing.</p>
+      <div class="skill-tags">
+        <span class="skill-tag">English</span>
+        <span class="skill-tag">Hindi</span>
+        <span class="skill-tag">Arabic</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Career History</div>
+  <h2 class="section-title">Professional Experience</h2>
+  <div class="exp-timeline">
+    <div class="exp-entry fade-in">
+      <div class="exp-meta">
+        <span class="exp-company">Emerson</span>
+        <span class="exp-period">Aug 2025 – Present · Dubai, UAE</span>
+      </div>
+      <p class="exp-role">Education Services Coordinator</p>
+      <ul class="exp-bullets">
+        <li>Coordinated and tracked service requests against established SLA timelines, ensuring timely execution and alignment with operational schedules.</li>
+        <li>Maintained compliance-ready documentation and organised records of service transactions, training activities, and request statuses — structured for internal reporting and audit requirements.</li>
+        <li>Verified accuracy and completeness of service-related documents prior to processing, ensuring all information aligned with operational requirements before finalisation.</li>
+        <li>Developed Excel-based reports and operational trackers to surface performance trends and support management decisions.</li>
+        <li>Identified recurring process bottlenecks and initiated automation workflows using Microsoft Power Automate.</li>
+        <li>Collaborated with cross-functional teams to support smooth execution of service operations and resolve process bottlenecks.</li>
+        <li>Assisted in scheduling and coordinating service-related activities, improving turnaround time and workflow efficiency.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-grid">
+    <div class="edu-card fade-in">
+      <div class="edu-year">2025</div>
+      <div class="edu-degree">Master of Business Administration</div>
+      <div class="edu-school">Manipal Academy of Higher Education, Dubai</div>
+      <div class="edu-spec">Specialisations: Service Operations & Marketing Management</div>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-year">2024</div>
+      <div class="edu-degree">MBA Exchange Program</div>
+      <div class="edu-school">MILA University, Malaysia</div>
+      <div class="edu-spec">International academic exchange</div>
+    </div>
+    <div class="edu-card fade-in">
+      <div class="edu-year">2022</div>
+      <div class="edu-degree">Bachelor of Business Administration</div>
+      <div class="edu-school">Madonna University</div>
+      <div class="edu-spec">Specialisations: International Business & Economics</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">Work & Certifications</div>
+  <h2 class="section-title">Projects & Certifications</h2>
+  <div class="projects-grid">
+    <div class="project-card fade-in">
+      <div class="project-badge">Excel · Power BI</div>
+      <h3>Service Performance Dashboard — Inventory Management System</h3>
+      <p>Designed and built an operational dashboard in Excel and Power BI to track data accuracy, automate reporting, and surface performance trends — directly transferable to monitoring client service metrics at Daman.</p>
+    </div>
+    <div class="project-card fade-in">
+      <div class="project-badge">Strategy · Research</div>
+      <h3>Business Strategy Analysis — Aviation Sector</h3>
+      <p>Conducted structured market research and competitive analysis; built a supply chain model and delivered a strategic report covering industry trends, cost drivers, and market positioning.</p>
+    </div>
+    <div class="project-card fade-in" style="border-left: 3px solid var(--gold);">
+      <div class="project-badge" style="background: var(--gold-pale); color: var(--gold);">In Progress</div>
+      <h3>Google Data Analytics Certificate</h3>
+      <p>Currently completing the Google Data Analytics professional certification — directly strengthening the ability to compile and interpret service performance data in a regulated, client-facing environment such as Daman.</p>
+    </div>
+    <div class="project-card fade-in">
+      <div class="project-badge">Microsoft 365</div>
+      <h3>Core Microsoft 365 Proficiency</h3>
+      <p>Advanced Excel (Pivot Tables, XLOOKUP, data cleaning, conditional formatting, dashboard creation), Power BI intermediate reporting, Power Automate workflow design, and Microsoft Word & PowerPoint for professional documentation.</p>
+    </div>
+  </div>
+</section>
+
+<!-- APPLICATION -->
+<section id="application" style="border-top: none;">
+  <div class="section-label">The Opportunity</div>
+  <h2 class="section-title">Coordinator, Key Client Services<br>Daman — Abu Dhabi</h2>
+  <div class="app-layout">
+    <div class="app-details">
+      <div class="app-detail">
+        <span class="app-detail-label">Job ID</span>
+        <span class="app-detail-value">1391</span>
+      </div>
+      <div class="app-detail">
+        <span class="app-detail-label">Posting Date</span>
+        <span class="app-detail-value">23 April 2026</span>
+      </div>
+      <div class="app-detail">
+        <span class="app-detail-label">Application Deadline</span>
+        <span class="app-detail-value">25 April 2026, 12:00 AM</span>
+      </div>
+      <div class="app-detail">
+        <span class="app-detail-label">Schedule</span>
+        <span class="app-detail-value">Full Time</span>
+      </div>
+      <div class="app-detail">
+        <span class="app-detail-label">Location</span>
+        <span class="app-detail-value">Abu Dhabi, UAE</span>
+      </div>
+      <div class="app-detail">
+        <span class="app-detail-label">Organisation</span>
+        <span class="app-detail-value">Daman — National Health Insurance Company</span>
+      </div>
+    </div>
+    <div>
+      <p class="app-pitch">
+        "I am drawn to Daman not only for the role itself, but for the opportunity to contribute to an organisation that directly impacts people's access to healthcare in the UAE."
+      </p>
+      <p style="font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 2rem;">
+        Every responsibility listed in this role — verifying client documents, executing data entry, maintaining service transaction records, meeting SLA timelines, compiling service reports — is part of my current daily work at Emerson. I am not learning this role; I am already doing it.
+      </p>
+      <a href="mailto:geomiriam@outlook.com" class="app-cta">Contact Miriam &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-name">Miriam George</span>
+  <span class="footer-contact">geomiriam@outlook.com &nbsp;·&nbsp; +971 50 938 2156 &nbsp;·&nbsp; Dubai, UAE</span>
+</footer>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>
